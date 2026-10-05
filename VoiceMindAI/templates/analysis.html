@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Text & Speech Analysis</h2>
+<div class="row mt-4">
+    <div class="col-md-12">
+        <textarea id="analysis-text" class="form-control mb-3 glassmorphism text-light" rows="5" placeholder="Enter text to analyze..."></textarea>
+        <button id="analyze-btn" class="btn btn-primary">Analyze</button>
+        <div id="analysis-loading" class="mt-2 text-info" style="display:none;">Analyzing...</div>
+    </div>
+</div>
+<div class="row mt-4" id="analysis-results" style="display:none;">
+    <div class="col-md-3"><div class="card glassmorphism p-3"><h5>Sentiment</h5><p id="res-sentiment"></p></div></div>
+    <div class="col-md-3"><div class="card glassmorphism p-3"><h5>Intent</h5><p id="res-intent"></p></div></div>
+    <div class="col-md-3"><div class="card glassmorphism p-3"><h5>Emotion</h5><p id="res-emotion"></p></div></div>
+    <div class="col-md-3"><div class="card glassmorphism p-3"><h5>Word Count</h5><p id="res-words"></p></div></div>
+    <div class="col-md-6 mt-3"><div class="card glassmorphism p-3"><h5>Keywords</h5><p id="res-keywords"></p></div></div>
+    <div class="col-md-6 mt-3"><div class="card glassmorphism p-3"><h5>Topics</h5><p id="res-topics"></p></div></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-5">
+        <h1 class="display-4">Welcome to VoiceMind AI</h1>
+        <p class="lead">Speak naturally or type your question.</p>
+    </div>
+</div>
+
+<div class="row text-center mb-5">
+    <div class="col-md-3">
+        <div class="card glassmorphism p-3">
+            <h3>{{ total_convs }}</h3>
+            <p>Total Conversations</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card glassmorphism p-3">
+            <h3>{{ total_msgs }}</h3>
+            <p>Total Messages</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card glassmorphism p-3">
+            <h3>{{ voice_msgs }}</h3>
+            <p>Voice Interactions</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card glassmorphism p-3">
+            <h3>{{ text_msgs }}</h3>
+            <p>Text Interactions</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Recent Conversations</h3>
+        <ul class="list-group glassmorphism">
+            {% for conv in recent_convs %}
+            <li class="list-group-item bg-transparent text-light border-secondary">
+                <a href="/chat?id={{ conv.id }}" class="text-info text-decoration-none">{{ conv.title }}</a> 
+                <small class="float-end">{{ conv.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+            </li>
+            {% else %}
+            <li class="list-group-item bg-transparent text-light border-secondary">No recent conversations.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

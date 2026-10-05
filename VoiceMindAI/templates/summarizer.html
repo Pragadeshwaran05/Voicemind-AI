@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Smart Summarizer</h2>
+<div class="row mt-4">
+    <div class="col-md-12">
+        <textarea id="sum-text" class="form-control mb-3 glassmorphism text-light" rows="6" placeholder="Paste content here to summarize..."></textarea>
+        <input type="file" id="sum-file" class="form-control mb-3 glassmorphism text-light" accept=".txt">
+        <button id="summarize-btn" class="btn btn-primary">Summarize</button>
+        <div id="sum-loading" class="mt-2 text-info" style="display:none;">Summarizing...</div>
+    </div>
+</div>
+<div class="row mt-4" id="sum-results" style="display:none;">
+    <div class="col-md-12">
+        <div class="card glassmorphism p-3 mb-3">
+            <h5>Summary</h5>
+            <p id="res-summary"></p>
+        </div>
+        <div class="card glassmorphism p-3 mb-3">
+            <h5>Key Points</h5>
+            <ul id="res-points"></ul>
+        </div>
+        <div class="card glassmorphism p-3 mb-3">
+            <h5>Action Items</h5>
+            <ul id="res-actions"></ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/summarizer.js') }}"></script>
+{% endblock %}
